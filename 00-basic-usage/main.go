@@ -93,5 +93,19 @@ func main() {
 	default:
 		fmt.Println("afternoon")
 	}
-	
+
+	// array
+	var aArr [5]int
+	aArr[4] = 100
+	fmt.Println("get:", aArr[2])
+	fmt.Println("len:", len(aArr))
+	b := [5]int{1, 2, 3, 4, 5}
+	fmt.Println(b)
+	var twoD [2][3]int
+	for i := 0; i < 2; i++ {
+		for j := 0; j < 3; j++ {
+			twoD[i][j] = i + j
+		}
+	}
+	fmt.Println("2d: ", twoD)
 }
