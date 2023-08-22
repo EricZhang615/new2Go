@@ -224,6 +224,12 @@ func main() {
 	fmt.Println(sa, sb, sc, sd)
 	fmt.Println(checkPassword(sa, "haha"))
 	fmt.Println(checkPassword2(&sa, "haha"))
+
+	// struct method
+	sa.resetPassword("2048")
+	fmt.Println(sa.checkPassword("2048"))
+	// 结构体是值类型
+	// (*u).password 可以简写为 u.password
 }
 
 // struct
@@ -233,4 +239,13 @@ func checkPassword(u user, password string) bool {
 
 func checkPassword2(u *user, password string) bool {
 	return u.password == password
+}
+
+// struct method
+func (u user) checkPassword(password string) bool {
+	return u.password == password
+}
+
+func (u *user) resetPassword(password string) {
+	u.password = password
 }
