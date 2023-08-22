@@ -10,13 +10,22 @@ func add(a int, b int) int {
 	return a + b
 }
 
-func add2(a, b int) int {
-	return a + b
-}
+//func add2(a, b int) int {
+//	return a + b
+//}
 
 func exists(m map[string]string, k string) (v string, ok bool) {
 	v, ok = m[k]
 	return v, ok
+}
+
+// point
+func add2(n int) {
+	n += 2
+}
+
+func add2ptr(n *int) {
+	*n += 2
 }
 
 func main() {
@@ -189,5 +198,11 @@ func main() {
 
 	v, ok := exists(map[string]string{"a": "A"}, "a")
 	fmt.Println(v, ok)
-	
+
+	// point
+	n := 5
+	add2(n)
+	fmt.Println(n)
+	add2ptr(&n)
+	fmt.Println(n)
 }
