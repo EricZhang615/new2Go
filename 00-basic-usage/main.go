@@ -2,34 +2,35 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
 	// var
-	var a = "asdasdad"
-
-	var b, c int = 1, 2
-
-	var d = true
-
-	var e float64
-
-	f := float32(e)
-
-	g := a + "foo"
-
-	fmt.Println(a, b, c, d, e, f)
-	fmt.Println(g)
-
-	const s string = "const"
-
-	const h = 500000000000
-
-	//const i = 3e20 / h
-
-	//fmt.Println(s, h, i, math.Sin(h), math.Sin(i))
-
-	fmt.Println("hello world")
+	//var a = "asdasdad"
+	//
+	//var b, c int = 1, 2
+	//
+	//var d = true
+	//
+	//var e float64
+	//
+	//f := float32(e)
+	//
+	//g := a + "foo"
+	//
+	//fmt.Println(a, b, c, d, e, f)
+	//fmt.Println(g)
+	//
+	//const s string = "const"
+	//
+	//const h = 500000000000
+	//
+	////const i = 3e20 / h
+	//
+	////fmt.Println(s, h, i, math.Sin(h), math.Sin(i))
+	//
+	//fmt.Println("hello world")
 
 	// for
 	i := 1
@@ -68,6 +69,29 @@ func main() {
 		fmt.Println(num, "has 1 digit")
 	} else {
 		fmt.Println(num, "has multiple digits")
+	}
+
+	// switch
+	a := 2
+	switch a {
+	case 1:
+		fmt.Println("one")
+	case 2:
+		fmt.Println("two")
+	case 3:
+		fmt.Println("three")
+	case 4, 5:
+		fmt.Println("four or five")
+	default:
+		fmt.Println("other")
+	}
+
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("before noon")
+	default:
+		fmt.Println("afternoon")
 	}
 	
 }
