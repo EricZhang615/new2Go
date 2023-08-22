@@ -131,5 +131,23 @@ func main() {
 
 	good := []string{"g", "o", "o", "d"}
 	fmt.Println(good)
+
+	// map
+	m := make(map[string]int)
+	m["one"] = 1
+	m["two"] = 2
+	fmt.Println(m)
+	fmt.Println(len(m))
+	fmt.Println(m["one"])
+	fmt.Println(m["unknown"])
+
+	r, ok := m["unknown"]
+	fmt.Println(r, ok)
+
+	delete(m, "one")
+
+	m2 := map[string]int{"one": 1, "two": 2}
+	var m3 = map[string]int{"one": 1, "two": 2}
+	fmt.Println(m2, m3)
 	
 }
