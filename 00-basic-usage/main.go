@@ -28,6 +28,12 @@ func add2ptr(n *int) {
 	*n += 2
 }
 
+// struct
+type user struct {
+	name     string
+	password string
+}
+
 func main() {
 	// var
 	//var a = "asdasdad"
@@ -205,4 +211,26 @@ func main() {
 	fmt.Println(n)
 	add2ptr(&n)
 	fmt.Println(n)
+
+	// struct
+	sa := user{name: "wang", password: "1024"}
+	sb := user{"wang", "1024"}
+	sc := user{name: "wang"}
+	sc.password = "1024"
+	var sd user
+	sd.name = "wang"
+	sd.password = "1024"
+
+	fmt.Println(sa, sb, sc, sd)
+	fmt.Println(checkPassword(sa, "haha"))
+	fmt.Println(checkPassword2(&sa, "haha"))
+}
+
+// struct
+func checkPassword(u user, password string) bool {
+	return u.password == password
+}
+
+func checkPassword2(u *user, password string) bool {
+	return u.password == password
 }
