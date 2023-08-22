@@ -149,5 +149,24 @@ func main() {
 	m2 := map[string]int{"one": 1, "two": 2}
 	var m3 = map[string]int{"one": 1, "two": 2}
 	fmt.Println(m2, m3)
-	
+
+	// range
+	nums := []int{2, 3, 4}
+	sum := 0
+	for i, num := range nums {
+		sum += num
+		if num == 2 {
+			fmt.Println("index:", i, "num:", num)
+		}
+	}
+	fmt.Println(sum)
+
+	m4 := map[string]string{"a": "A", "b": "B"} // map is disordered
+	for k, v := range m4 {
+		fmt.Println(k, v)
+	}
+	for k := range m4 {
+		fmt.Println("key", k)
+	}
+
 }
