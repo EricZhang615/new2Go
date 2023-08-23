@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"strings"
@@ -38,6 +39,12 @@ type user struct {
 
 type point struct {
 	x, y int
+}
+
+type userInfo struct {
+	Name  string
+	Age   int `json:"age"`
+	Hobby []string
 }
 
 func main() {
@@ -285,6 +292,28 @@ func main() {
 	f := 3.141592653
 	fmt.Println(f)          // 3.141592653
 	fmt.Printf("%.2f\n", f) // 3.14
+
+	// json
+	user := userInfo{Name: "wang", Age: 18, Hobby: []string{"Golang", "TypeScript"}}
+	buf, err := json.Marshal(user)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(buf)
+	fmt.Println(string(buf))
+
+	buf, err = json.MarshalIndent(user, "", "\t")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(buf))
+
+	var userInfo userInfo
+	err = json.Unmarshal(buf, &userInfo)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("%#v\n", userInfo)
 }
 
 // struct
