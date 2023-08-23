@@ -314,6 +314,23 @@ func main() {
 		panic(err)
 	}
 	fmt.Println("%#v\n", userInfo)
+
+	// time
+	now := time.Now()
+	fmt.Println(now)
+	t1 := time.Date(2023, 8, 23, 20, 13, 0, 0, time.UTC)
+	t2 := time.Date(2023, 8, 24, 12, 12, 12, 0, time.UTC)
+	fmt.Println(t1)
+	fmt.Println(t1.Year(), t1.Month(), t1.Day(), t1.Hour(), t1.Minute())
+	fmt.Println(t1.Format("2006-04-02 15:04:05"))
+	diff := t2.Sub(t1)
+	fmt.Println(diff, diff.Minutes(), diff.Seconds())
+	t3, err := time.Parse("2006-04-02 15:04:05", "2023-08-23 22:22:22")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(t3)
+	fmt.Println(now.Unix())
 }
 
 // struct
