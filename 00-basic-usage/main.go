@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -242,10 +243,27 @@ func main() {
 
 	if u, err := findUser([]user{{"wang", "1024"}}, "li"); err != nil {
 		fmt.Println(err)
-		return
+		// return
 	} else {
 		fmt.Println(u.name)
 	}
+
+	// string
+	aa := "hello"
+	fmt.Println(strings.Contains(aa, "ll"))               // true
+	fmt.Println(strings.Count(aa, "l"))                   // 2
+	fmt.Println(strings.HasPrefix(aa, "he"))              // true
+	fmt.Println(strings.HasSuffix(aa, "llo"))             // true
+	fmt.Println(strings.Index(aa, "ll"))                  // 2
+	fmt.Println(strings.Join([]string{"he", "llo"}, "-")) // he-llo
+	fmt.Println(strings.Repeat(aa, 2))                    // hellohello
+	fmt.Println(strings.Replace(aa, "e", "E", -1))        // hEllo
+	fmt.Println(strings.Split("a-b-c", "-"))              // [a b c]
+	fmt.Println(strings.ToLower(aa))                      // hello
+	fmt.Println(strings.ToUpper(aa))                      // HELLO
+	fmt.Println(len(aa))                                  // 5
+	bb := "你好"
+	fmt.Println(len(bb)) // 6
 }
 
 // struct
