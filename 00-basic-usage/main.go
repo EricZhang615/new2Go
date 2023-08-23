@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -331,6 +332,19 @@ func main() {
 	}
 	fmt.Println(t3)
 	fmt.Println(now.Unix())
+
+	// strconv
+	f, _ = strconv.ParseFloat("1.234", 64)
+	fmt.Println(f)
+	in, _ := strconv.ParseInt("111", 10, 64)
+	fmt.Println(in)
+	in, _ = strconv.ParseInt("0x1000", 0, 64)
+	fmt.Println(in)
+	in2, _ := strconv.Atoi("123")
+	fmt.Println(in2)
+	in2, err = strconv.Atoi("AAA")
+	fmt.Println(in2, err)
+	
 }
 
 // struct
