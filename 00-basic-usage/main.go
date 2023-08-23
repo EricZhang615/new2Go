@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
+	"os/exec"
 	"strconv"
 	"strings"
 	"time"
@@ -344,7 +346,17 @@ func main() {
 	fmt.Println(in2)
 	in2, err = strconv.Atoi("AAA")
 	fmt.Println(in2, err)
-	
+
+	// env
+	fmt.Println(os.Args)
+	fmt.Println(os.Getenv("PATH"))
+	fmt.Println(os.Setenv("AA", "BB"))
+
+	buf, err = exec.Command("ls").CombinedOutput()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(buf))
 }
 
 // struct
