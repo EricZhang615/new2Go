@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -230,6 +231,21 @@ func main() {
 	fmt.Println(sa.checkPassword("2048"))
 	// 结构体是值类型
 	// (*u).password 可以简写为 u.password
+
+	// error
+	u, err := findUser([]user{{"wang", "1024"}}, "wang")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(u.name)
+
+	if u, err := findUser([]user{{"wang", "1024"}}, "li"); err != nil {
+		fmt.Println(err)
+		return
+	} else {
+		fmt.Println(u.name)
+	}
 }
 
 // struct
@@ -248,4 +264,14 @@ func (u user) checkPassword(password string) bool {
 
 func (u *user) resetPassword(password string) {
 	u.password = password
+}
+
+// error
+func findUser(users []user, name string) (v *user, err error) {
+	for _, u := range users {
+		if u.name == name {
+			return &u, nil
+		}
+	}
+	return nil, errors.New("not found")
 }
