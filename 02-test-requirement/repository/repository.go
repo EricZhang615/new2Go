@@ -70,6 +70,16 @@ func initPostIndexMap(filePath string) error {
 	return nil
 }
 
+func Init(filePath string) error {
+	if err := initTopicIndexMap(filePath); err != nil {
+		return err
+	}
+	if err := initPostIndexMap(filePath); err != nil {
+		return err
+	}
+	return nil
+}
+
 var (
 	topicDao  *TopicDao
 	topicOnce sync.Once
