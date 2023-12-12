@@ -2,48 +2,36 @@ package main
 
 import "fmt"
 
-func totalFruit(fruits []int) int {
-	i, j := 0, 0
-	f := make(map[int]int)
-	for j < len(fruits) {
-		for j < len(fruits) {
-			if len(f) > 2 {
-				if _, e := f[fruits[j]]; !e {
-					f[fruits[j]] = 1
-				} else {
-					f[fruits[j]]++
-				}
-				j++
-				break
-			} else if len(f) == 2 {
-				if _, e := f[fruits[j]]; !e {
-					f[fruits[j]] = 1
-					break
-				} else {
-					f[fruits[j]]++
-				}
-			} else {
-				if _, e := f[fruits[j]]; !e {
-					f[fruits[j]] = 1
-				} else {
-					f[fruits[j]]++
-				}
+func totalFruit(fruits []int) (ans int) {
+	cnt := map[int]int{}
+	left := 0
+	for right, x := range fruits {
+		cnt[x]++
+		for len(cnt) > 2 {
+			y := fruits[left]
+			cnt[y]--
+			if cnt[y] == 0 {
+				delete(cnt, y)
 			}
-			j++
+			left++
 		}
-		if f[fruits[i]] == 1 {
-			delete(f, fruits[i])
-		} else {
-			f[fruits[i]]--
-		}
-		i++
+		ans = max(ans, right-left+1)
 	}
-	return j - i + 1
+	return
+}
+
+func max(a, b int) int {
+	if b > a {
+		return b
+	}
+	return a
 }
 
 func main() {
 	fruits := []int{3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4}
 	fmt.Println(totalFruit(fruits))
 	fruits = []int{1, 2, 3, 2, 2}
+	fmt.Println(totalFruit(fruits))
+	fruits = []int{4, 7, 7, 0, 8, 3, 8, 2, 5}
 	fmt.Println(totalFruit(fruits))
 }
