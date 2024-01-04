@@ -34,3 +34,25 @@ func preorderTraversal2(root *TreeNode) (res []int) {
 	traversal(root)
 	return res
 }
+
+// 递归法
+
+func preorderTraversal3(root *TreeNode) (res []int) {
+	var stack []*TreeNode
+	if root == nil {
+		return res
+	}
+	stack = append(stack, root)
+	for len(stack) > 0 {
+		node := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		res = append(res, node.Val)
+		if node.Right != nil {
+			stack = append(stack, node.Right)
+		}
+		if node.Left != nil {
+			stack = append(stack, node.Left)
+		}
+	}
+	return res
+}
