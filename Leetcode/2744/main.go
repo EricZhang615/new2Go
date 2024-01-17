@@ -19,6 +19,16 @@ func maximumNumberOfStringPairs(words []string) int {
 	return res
 }
 
+func maximumNumberOfStringPairs2(words []string) int {
+	ans := 0
+	seen := map[int]int{}
+	for _, word := range words {
+		ans += seen[int(word[1])*100+int(word[0])]
+		seen[int(word[0])*100+int(word[1])] = 1
+	}
+	return ans
+}
+
 func main() {
 	fmt.Println(maximumNumberOfStringPairs([]string{"cd", "ac", "dc", "ca", "zz"}))
 }
