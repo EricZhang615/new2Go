@@ -12,15 +12,21 @@ func solveNQueens(n int) [][]string {
 			return
 		}
 		for i := 0; i < n; i++ {
+			mark := false
 			for j, col := range path {
 				if col[i] == 'Q' {
-					continue
+					mark = true
+					break
 				}
 				rowLeft := i - len(path) + j
 				rowRight := rowLeft + (len(path)-j)*2
 				if (rowLeft >= 0 && col[rowLeft] == 'Q') || (rowRight <= n-1 && col[rowRight] == 'Q') {
-					continue
+					mark = true
+					break
 				}
+			}
+			if mark {
+				continue
 			}
 			str := ""
 			for j := 0; j < i; j++ {
